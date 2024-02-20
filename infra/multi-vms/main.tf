@@ -1,7 +1,7 @@
 # Define the resource group
 resource "azurerm_resource_group" "rg" {
-  name     = "var.rg_name"
-  location = "var.location"
+  name     = var.rg_name
+  location = var.location
 }
 
 # Define the virtual network
@@ -46,7 +46,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
     azurerm_network_interface.nic[count.index].id
   ]
   os_disk {
-    name                 = "lnx-tf-vm-osdisk"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

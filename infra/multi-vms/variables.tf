@@ -37,5 +37,5 @@ variable "vm_pwd" {
 variable "vm_count" {
   type        = number
   description = "The number of VMs to create"
-  default = 3
+  default     = 3
 }
