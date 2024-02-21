@@ -21,6 +21,16 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = ["10.0.${count.index}.0/24"]
 }
 
+# Define the public ips for each VM
+resource "azurerm_public_ip" "public_ip" {
+  count               = var.vm_count
+  name                = "example-pip-${count.index}"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
 # Define the network interface for each VM
 resource "azurerm_network_interface" "nic" {
   count               = var.vm_count
@@ -32,6 +42,7 @@ resource "azurerm_network_interface" "nic" {
     name                          = "example-ipconfig-${count.index}"
     subnet_id                     = azurerm_subnet.subnet[count.index].id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.public_ip[count.index].id
   }
 }
 

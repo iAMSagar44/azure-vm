@@ -10,24 +10,6 @@ variable "rg_name" {
   default     = "web-app-dev-rg"
 }
 
-variable "plan_tier" {
-  type        = string
-  description = "The tier of app service plan to create"
-  default     = "Basic"
-}
-
-variable "plan_sku" {
-  type        = string
-  description = "The sku of app service plan to create"
-  default     = "B1"
-}
-
-variable "environment" {
-  type        = string
-  description = "Name of the deployment environment"
-  default     = "dev"
-}
-
 variable "vm_pwd" {
   type        = string
   description = "VM admin password"
@@ -37,5 +19,5 @@ variable "vm_pwd" {
 variable "vm_count" {
   type        = number
   description = "The number of VMs to create"
-  default     = 3
+  default     = 2
 }
