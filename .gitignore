@@ -8,3 +8,4 @@ infra/single-vm/.terraform.lock.hcl
 infra/single-vm/terraform.tfstate
 infra/single-vm/terraform.tfstate.backup
 infra/single-vm/.terraform
+infra/single-vm/tfplan
